@@ -7,8 +7,8 @@ import { HomeCardComponent } from './home-card/home-card.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [HomeCardComponent, JsonPipe],
+  standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
