@@ -7,9 +7,10 @@ const NG_COMPONENTS = [RouterOutlet];
 const COMPONENTS = [NavbarComponent, SidebarComponent];
 
 @Component({
-    selector: 'app-root',
-    imports: [...NG_COMPONENTS, ...COMPONENTS],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css'
+  selector: 'app-root',
+  imports: [...NG_COMPONENTS, ...COMPONENTS],
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
 })
 export class AppComponent {}

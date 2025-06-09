@@ -1,7 +1,9 @@
 <h1 class="text-4xl font-semibold mb-8">Películas</h1>
-<section class="text-2xl mb-4">firstMovie: {{ firstMovie() | json }}</section>
 <section class="flex gap-4 flex-wrap">
   @for (movie of movies(); track movie.imdbID) {
-  <app-home-card [movie]="movie" />
+  <app-home-card
+    [movieAlias]="movie"
+    (movieSelected)="getSelectedMovie($event)"
+  />
   }
 </section>

@@ -1,27 +1,46 @@
-# DemoApp
+![Angular Elementary Cover](./cover.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+# Curso gratuito de Angular desde cero
 
-## Development server
+Este repositorio acompaña mi curso gratuito en YouTube donde aprenderás Angular desde cero, pero con una visión completa: desde sus conceptos legacy hasta las capacidades más modernas que ofrece Angular 20.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🚀 **Este es el único proyecto del curso** y en él iré integrando cada nuevo tema, incluyendo comparaciones entre prácticas antiguas (`NgModules`, `ReactiveForms`, etc.) y las nuevas APIs como `provideHttpClient`, `inject()`, routing standalone, entre otras.
 
-## Code scaffolding
+📺 **Playlist del curso en YouTube**  
+👉 [Haz clic aquí para ver la playlist completa](https://youtube.com/playlist?list=PLD4CDC34D7sMfVxx037MsX3_IbZ_0mFwA&si=lfr5iMmI-Q83hRYp)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🔍 ¿Qué encontrarás en este repositorio?
 
-## Build
+- ✅ Proyecto completo con Angular 20
+- 🧱 Componentes sin `NgModules` (arquitectura moderna)
+- 🔁 Comparaciones con código legacy cuando es útil para el aprendizaje
+- 🧭 Routing moderno usando `provideRouter` y lazy loading sin módulos
+- 🧪 Pruebas unitarias adaptadas a la nueva arquitectura
+- 💡 Explicaciones progresivas en cada carpeta
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> ⚠️ Este repositorio **no contiene código legacy directo**, sino que se comparan conceptos y se contrastan patrones antiguos vs. modernos dentro del mismo proyecto.
 
-## Running unit tests
+## 📚 Público objetivo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Personas que están empezando con Angular desde cero
+- Desarrolladores que vienen de versiones antiguas
+- Programadores que desean dominar Angular 20 con buenas prácticas actuales
 
-## Running end-to-end tests
+## 📦 Requisitos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js 22 o superior
+- Angular CLI 20 (`npm install -g @angular/cli`)
+- Ganas de aprender 💪
 
-## Further help
+## ▶️ ¿Cómo iniciar el proyecto?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm install
+npm run dev
+```
+
+## 🤝 Contribuciones
+
+Si deseas aportar mejoras, sugerencias o ideas para ampliar el curso, eres bienvenido. Puedes crear un Pull Request o abrir un issue.
+
+✨ Este curso está en desarrollo activo, así que no olvides suscribirte al canal para seguir recibiendo actualizaciones.

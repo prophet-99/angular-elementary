@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  linkedSignal,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { JsonPipe } from '@angular/common';
 
 import { OmdbMoviesService } from '@core/services/omdb-movies.service';
@@ -16,15 +23,6 @@ export class HomeComponent implements OnInit {
   private omdbMoviesService = inject(OmdbMoviesService);
   // movies!: Movie[];
   movies = signal<Movie[]>([]);
-  firstMovie = computed(() => {
-    const scMovies = this.movies();
-    return scMovies[0];
-  });
-  // TODO: Update Version
-  // lastMovie = linkedSignal(() => {
-  //   onst scMovies = this.movies();
-  //   return scMovies[0];
-  // });
 
   ngOnInit() {
     // this.omdbMoviesService
@@ -36,5 +34,9 @@ export class HomeComponent implements OnInit {
       // this.movies = movies;
       this.movies.set(localMovies);
     });
+  }
+
+  getSelectedMovie(id: string) {
+    console.log('Selected movie ID:', id);
   }
 }

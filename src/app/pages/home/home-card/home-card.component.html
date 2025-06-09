@@ -2,18 +2,25 @@
   class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
 >
   <a href="#">
-    <img class="rounded-t-lg" [src]="movie.Poster" [alt]="movie.Title" />
+    <img class="rounded-t-lg" [src]="movie().Poster" [alt]="movie().Title" />
   </a>
-  <div class="p-5">
+  <div class="p-5 mb-4">
     <a href="#">
       <h5
         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       >
-        {{ movie.Title }}
+        {{ movie().Title }}
       </h5>
     </a>
     <p class="font-normal text-gray-700 dark:text-gray-400">
-      Año: {{ movie.Year }}
+      Año: {{ movie().Year }}
     </p>
   </div>
+  <button
+    type="button"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    (click)="emitSelectedMovie()"
+  >
+    Ver más
+  </button>
 </article>
