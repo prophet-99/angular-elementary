@@ -1,12 +1,7 @@
-import {
-  Component,
-  computed,
-  inject,
-  linkedSignal,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { JsonPipe } from '@angular/common';
+import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
+
+import { interval } from 'rxjs';
 
 import { OmdbMoviesService } from '@core/services/omdb-movies.service';
 import { type Movie } from '@core/models/movie.model';
@@ -14,7 +9,7 @@ import { HomeCardComponent } from './home-card/home-card.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeCardComponent, JsonPipe],
+  imports: [HomeCardComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -23,6 +18,25 @@ export class HomeComponent implements OnInit {
   private omdbMoviesService = inject(OmdbMoviesService);
   // movies!: Movie[];
   movies = signal<Movie[]>([]);
+  counter!: Signal<number>;
+
+  constructor() {
+    // *toSignal: Observable -> Signal
+    const interval$ = interval(1_000);
+    this.counter = toSignal(interval$, {
+      initialValue: 0,
+      manualCleanup: true,
+    });
+
+    const count = signal(0);
+    const count$ = toObservable(count);
+    count$.subscribe({
+      next: (m) => console.log('toObservable', m),
+    });
+    count.set(1);
+    count.set(2);
+    count.set(3);
+  }
 
   ngOnInit() {
     // this.omdbMoviesService

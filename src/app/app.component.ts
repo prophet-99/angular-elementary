@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { NavbarComponent, SidebarComponent } from '@core/components';
+import { NavbarComponent } from '@core/components';
 
 const NG_COMPONENTS = [RouterOutlet];
-const COMPONENTS = [NavbarComponent, SidebarComponent];
+const COMPONENTS = [NavbarComponent];
 
 @Component({
   selector: 'app-root',

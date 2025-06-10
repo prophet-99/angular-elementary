@@ -1,4 +1,7 @@
 <h1 class="text-4xl font-semibold mb-8">Películas</h1>
+<div class="mb-4">
+  <h2>{{ counter() }}</h2>
+</div>
 <section class="flex gap-4 flex-wrap">
   @for (movie of movies(); track movie.imdbID) {
   <app-home-card
