@@ -1,56 +1,36 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
-import { toSignal, toObservable } from '@angular/core/rxjs-interop';
+import { Component, OnInit, resource, signal } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 
-import { interval } from 'rxjs';
-
-import { OmdbMoviesService } from '@core/services/omdb-movies.service';
-import { type Movie } from '@core/models/movie.model';
 import { HomeCardComponent } from './home-card/home-card.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeCardComponent],
+  imports: [HomeCardComponent, JsonPipe],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
-  private omdbMoviesService = inject(OmdbMoviesService);
-  // movies!: Movie[];
-  movies = signal<Movie[]>([]);
-  counter!: Signal<number>;
+export class HomeComponent {
+  pokemonId = signal(1);
+  pokemonResource = resource({
+    params: () => ({ id: this.pokemonId() }),
+    loader: ({ params, previous, abortSignal }) => {
+      console.log(previous);
+      return this.fetchPokemon(params.id, abortSignal);
+    },
+    defaultValue: { abilities: ['🐱‍👤'] },
+  });
 
-  constructor() {
-    // *toSignal: Observable -> Signal
-    const interval$ = interval(1_000);
-    this.counter = toSignal(interval$, {
-      initialValue: 0,
-      manualCleanup: true,
+  private async fetchPokemon(id: number, abortSignal: AbortSignal) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+      signal: abortSignal,
     });
-
-    const count = signal(0);
-    const count$ = toObservable(count);
-    count$.subscribe({
-      next: (m) => console.log('toObservable', m),
-    });
-    count.set(1);
-    count.set(2);
-    count.set(3);
+    return response.json();
   }
 
-  ngOnInit() {
-    // this.omdbMoviesService
-    //   .getPromiseMovies()
-    //   .then(console.log)
-    //   .catch(console.log);
+  constructor() {}
 
-    this.omdbMoviesService.getObservableMovies().subscribe((localMovies) => {
-      // this.movies = movies;
-      this.movies.set(localMovies);
-    });
-  }
-
-  getSelectedMovie(id: string) {
-    console.log('Selected movie ID:', id);
+  selectPokemon() {
+    this.pokemonId.update((id) => id + 1);
   }
 }
