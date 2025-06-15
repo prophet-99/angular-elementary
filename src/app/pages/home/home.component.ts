@@ -1,36 +1,26 @@
-import { Component, OnInit, resource, signal } from '@angular/core';
-import { JsonPipe } from '@angular/common';
-
-import { HomeCardComponent } from './home-card/home-card.component';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeCardComponent, JsonPipe],
+  imports: [ReactiveFormsModule, RouterModule],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  pokemonId = signal(1);
-  pokemonResource = resource({
-    params: () => ({ id: this.pokemonId() }),
-    loader: ({ params, previous, abortSignal }) => {
-      console.log(previous);
-      return this.fetchPokemon(params.id, abortSignal);
-    },
-    defaultValue: { abilities: ['🐱‍👤'] },
+  private formBuilder = inject(FormBuilder);
+  form = this.formBuilder.group({
+    address: this.formBuilder.group({
+      city: [''],
+      street: [''],
+      homeNumber: ['', [Validators.required]],
+    }),
+    creditCard: this.formBuilder.group({
+      cardNumber: [''],
+      ccvNumber: [''],
+      expirationDate: [''],
+    }),
   });
-
-  private async fetchPokemon(id: number, abortSignal: AbortSignal) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      signal: abortSignal,
-    });
-    return response.json();
-  }
-
-  constructor() {}
-
-  selectPokemon() {
-    this.pokemonId.update((id) => id + 1);
-  }
 }

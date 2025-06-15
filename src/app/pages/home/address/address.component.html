@@ -1,0 +1,52 @@
+<section [formGroup]="form">
+  <article class="mb-5">
+    <label
+      for="city-id"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      City
+    </label>
+    <input
+      type="text"
+      id="city-id"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="City"
+      formControlName="city"
+      required
+    />
+  </article>
+
+  <article class="mb-5">
+    <label
+      for="street-id"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Street
+    </label>
+    <input
+      type="text"
+      id="street-id"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Street"
+      formControlName="street"
+      required
+    />
+  </article>
+
+  <article class="mb-5">
+    <label
+      for="home-number-id"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Home Number
+    </label>
+    <input
+      type="text"
+      id="home-number-id"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Jr. some exmple #123"
+      formControlName="homeNumber"
+      required
+    />
+  </article>
+</section>
