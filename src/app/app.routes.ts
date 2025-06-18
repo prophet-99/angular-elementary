@@ -6,28 +6,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children: [
-      {
-        path: 'address',
-        loadComponent: () =>
-          import('@pages/home/address/address.component').then(
-            (m) => m.AddressComponent
-          ),
-      },
-      {
-        path: 'credit-card',
-        loadComponent: () =>
-          import('@pages/home/credit-card/credit-card.component').then(
-            (m) => m.CreditCardComponent
-          ),
-      },
-    ],
   },
   {
     path: 'search',
     component: SearchComponent,
   },
-
   {
     path: '**',
     redirectTo: 'home',

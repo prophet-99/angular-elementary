@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HomeStateService } from '@pages/home/state/home-state.service';
+import { HomeEventBusService } from '@pages/home/event-bus/home.event-bus.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,10 @@ import { HomeStateService } from '@pages/home/state/home-state.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  private homeStateService = inject(HomeStateService);
+  private homeEventBusService = inject(HomeEventBusService);
 
   ngOnInit() {
-    this.homeStateService.selectedMovie.subscribe((movie) =>
+    this.homeEventBusService.selectMovie$.subscribe((movie) =>
       console.log(movie)
     );
   }

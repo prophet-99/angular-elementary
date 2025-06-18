@@ -1,15 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  input,
-  output,
-  Output,
-} from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 
 import { type Movie } from '@core/models/movie.model';
-import { HomeStateService } from '../state/home-state.service';
+import { HomeEventBusService } from '../event-bus/home.event-bus.service';
 
 @Component({
   selector: 'app-home-card',
@@ -19,17 +11,15 @@ import { HomeStateService } from '../state/home-state.service';
   styleUrl: './home-card.component.css',
 })
 export class HomeCardComponent {
-  private homeStateService = inject(HomeStateService);
-  // @Input() movie!: Movie;
+  private homeEventBusService = inject(HomeEventBusService);
   movie = input.required<Movie>({
     alias: 'movieAlias',
   });
-  // @Output() movieSelected = new EventEmitter<string>();
   movieSelected = output<string>();
 
   emitSelectedMovie() {
     this.movieSelected.emit(this.movie().imdbID || '');
 
-    this.homeStateService.selectedMovie.emit(this.movie());
+    this.homeEventBusService.emitMovie(this.movie());
   }
 }
