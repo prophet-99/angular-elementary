@@ -1,26 +1,24 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { DatePipe } from '@angular/common';
 
-import { OmdbMoviesService } from '@core/services/omdb-movies.service';
-import { type Movie } from '@core/models/movie.model';
-import { HomeCardComponent } from './home-card/home-card.component';
+import { map } from 'rxjs';
 
+import { TheMovieDbService } from '@core/services/the-movie-db.service';
+
+const NG_IMPORTS = [DatePipe];
 @Component({
   selector: 'app-home',
-  imports: [HomeCardComponent],
-  standalone: true,
+  imports: [NG_IMPORTS],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  private omdbMoviesService = inject(OmdbMoviesService);
-  movies = toSignal(this.omdbMoviesService.getObservableMovies());
-
-  constructor() {}
-
-  getSelectedMovie(id: string) {
-    console.log('Selected movie ID:', id);
-  }
-
-  selectPokemon() {}
+  // DI
+  private readonly theMovieDBService = inject(TheMovieDbService);
+  // LOCAL
+  private nowPlayinMovies$ = this.theMovieDBService
+    .getNowPlayingMovies()
+    .pipe(map(({ results }) => results[0]));
+  selectedMovie = toSignal(this.nowPlayinMovies$);
 }

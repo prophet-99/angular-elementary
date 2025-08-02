@@ -1,15 +1,18 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '@pages/home/home.component';
-import { SearchComponent } from '@pages/search/search.component';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
-    path: 'search',
-    component: SearchComponent,
+    path: 'home',
+    loadComponent: () => import('@pages/index').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'movies',
+    loadComponent: () => import('@pages/index').then((m) => m.MoviesComponent),
   },
   {
     path: '**',

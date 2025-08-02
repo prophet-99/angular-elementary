@@ -5,7 +5,6 @@ import { NavbarComponent } from '@core/components';
 
 const NG_COMPONENTS = [RouterOutlet];
 const COMPONENTS = [NavbarComponent];
-
 @Component({
   selector: 'app-root',
   imports: [...NG_COMPONENTS, ...COMPONENTS],

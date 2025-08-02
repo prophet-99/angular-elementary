@@ -1,9 +1,17 @@
-<h1 class="text-4xl font-semibold mb-8">Películas</h1>
-<section class="flex gap-4 flex-wrap">
-  @for (movie of movies(); track movie.imdbID) {
-  <app-home-card
-    [movieAlias]="movie"
-    (movieSelected)="getSelectedMovie($event)"
+@let movie = selectedMovie();
+
+<main>
+  <img
+    src="https://image.tmdb.org/t/p/original/{{ movie?.backdrop_path }}"
+    alt="poster principal de la película {{ movie?.title }}"
   />
-  }
-</section>
+  <span>{{ movie?.release_date | date : 'yyyy' }}</span>
+  <h1>{{ movie?.title }} ({{ movie?.original_title }})</h1>
+  <p>{{ movie?.overview }}</p>
+  <section>
+    <img
+      src="https://image.tmdb.org/t/p/original/{{ movie?.poster_path }}"
+      alt="poster de la película {{ movie?.title }}"
+    />
+  </section>
+</main>
