@@ -1,0 +1,44 @@
+.sh-navbar {
+  z-index: var(--z-fixed);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  padding: 1.5em 2rem;
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.sh-navbar__thumb {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sh-navbar__thumb img {
+  max-width: 12.5rem;
+}
+
+.sh-navbar__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 3rem;
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.sh-navbar__list a {
+  transition: color 0.3s ease-out;
+  font-weight: 300;
+}
+
+.sh-navbar__list a:hover {
+  color: var(--primary-color);
+}
+
+.sh-navbar__list a.is-active {
+  color: var(--primary-color);
+  font-weight: 500;
+}

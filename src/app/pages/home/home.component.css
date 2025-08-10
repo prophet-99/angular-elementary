@@ -1,0 +1,84 @@
+.sh-home {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100vh;
+  padding: calc(var(--navbar-height) + 1rem) 2rem 2.5em;
+  background-image: var(--backdrop-url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 2rem;
+}
+
+.sh-home::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  content: '';
+}
+
+.sh-home__content {
+  position: relative;
+  max-width: 40rem;
+  color: #fff;
+  text-align: right;
+}
+
+.sh-home__content span {
+  margin-block-end: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.sh-home__content h1 {
+  margin-block-end: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.sh-home__content p {
+  display: -webkit-box;
+  margin-block-end: 2rem;
+  overflow: hidden;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.sh-home__poster {
+  flex-shrink: 0;
+}
+
+.sh-home__poster img {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  height: 34rem;
+  border-radius: 1rem;
+}
+
+.sh-home__button {
+  display: flex;
+  justify-content: center;
+}
+
+/* TODO: Refactor this styles to new component */
+.sh-button {
+  padding: 0.5em 1.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+}
+.sh-button:hover {
+  background-color: var(--emphasis-color);
+}

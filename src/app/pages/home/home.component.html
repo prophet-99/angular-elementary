@@ -1,17 +1,23 @@
 @let movie = selectedMovie();
 
-<main>
-  <img
-    src="https://image.tmdb.org/t/p/original/{{ movie?.backdrop_path }}"
-    alt="poster principal de la película {{ movie?.title }}"
-  />
-  <span>{{ movie?.release_date | date : 'yyyy' }}</span>
-  <h1>{{ movie?.title }} ({{ movie?.original_title }})</h1>
-  <p>{{ movie?.overview }}</p>
-  <section>
+<main
+  class="sh-home"
+  style="--backdrop-url: url(https://image.tmdb.org/t/p/original/{{
+    movie?.backdrop_path
+  }})"
+>
+  <section class="sh-home__content">
+    <span>{{ movie?.release_date | date : 'yyyy' }}</span>
+    <h1>{{ movie?.title }} ({{ movie?.original_title }})</h1>
+    <p>{{ movie?.overview }}</p>
+    <div class="sh-home__button">
+      <button class="sh-button">Ver trailer</button>
+    </div>
+  </section>
+  <picture class="sh-home__poster">
     <img
       src="https://image.tmdb.org/t/p/original/{{ movie?.poster_path }}"
       alt="poster de la película {{ movie?.title }}"
     />
-  </section>
+  </picture>
 </main>
