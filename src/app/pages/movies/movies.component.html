@@ -1,1 +1,14 @@
-<p>movies works!</p>
+<article>
+  <input
+    #searchInput
+    placeholder="Buscar película"
+    type="text"
+    (keyup)="onSearchChange()"
+  />
+</article>
+
+<article>
+  @for (popularMovie of filteredMovies(); track popularMovie?.id) {
+  <app-home-card [movie]="popularMovie" />
+  }
+</article>

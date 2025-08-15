@@ -10,6 +10,6 @@ const COMPONENTS = [NavbarComponent];
   imports: [...NG_COMPONENTS, ...COMPONENTS],
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {}
