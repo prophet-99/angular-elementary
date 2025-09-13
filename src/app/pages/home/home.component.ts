@@ -5,10 +5,10 @@ import { DatePipe } from '@angular/common';
 import { map } from 'rxjs';
 
 import { TheMovieDbService } from '@core/services/the-movie-db.service';
-import { MoviesComponent } from '@pages/movies/movies.component';
+import { HomeMoviesComponent } from './home-movies/home-movies.component';
 
 const NG_IMPORTS = [DatePipe];
-const IMPORTS = [MoviesComponent];
+const IMPORTS = [HomeMoviesComponent];
 
 @Component({
   selector: 'app-home',

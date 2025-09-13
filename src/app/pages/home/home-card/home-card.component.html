@@ -1,8 +1,14 @@
-<section>
+<section class="sh-home-card">
   <img
+    class="sh-home-card__img"
     src="https://image.tmdb.org/t/p/original/{{ movie()?.poster_path }}"
     alt="poster de la película {{ movie()?.title }}"
   />
-  <p>{{ movie()?.title }}</p>
-  <p>{{ movie()?.original_language }}</p>
+
+  <span class="sh-home-card__popularity"
+    >{{ movie()?.popularity | number : '1.1-1' }} ⭐</span
+  >
+
+  <p class="sh-home-card__title">{{ movie()?.title }}</p>
+  <p class="sh-home-card__release">{{ movie()?.release_date }}</p>
 </section>

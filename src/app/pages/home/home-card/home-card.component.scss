@@ -1,3 +1,35 @@
-img {
-  max-width: 12.5rem;
+.sh-home-card {
+  position: relative;
+
+  &__popularity {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background: #000000ad;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    margin-block-end: 1rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__release {
+    color: var(--emphasis-color);
+    text-align: center;
+  }
 }

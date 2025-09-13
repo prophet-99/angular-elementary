@@ -1,1 +1,17 @@
-<p>home-movies works!</p>
+<article class="sh-search">
+  <div class="sh-search__input">
+    <span>🔎</span>
+    <input
+      #searchInput
+      placeholder="Buscar película"
+      type="text"
+      (keyup)="onSearchChange()"
+    />
+  </div>
+</article>
+
+<article class="sh-movies-container">
+  @for (popularMovie of filteredMovies(); track popularMovie?.id) {
+  <app-home-card [movie]="popularMovie" />
+  }
+</article>

@@ -10,10 +10,10 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('@pages/index').then((m) => m.HomeComponent),
   },
-  {
-    path: 'movies',
-    loadComponent: () => import('@pages/index').then((m) => m.MoviesComponent),
-  },
+  // {
+  //   path: 'movies',
+  //   loadComponent: () => import('@pages/index').then((m) => m.MoviesComponent),
+  // },
   {
     path: '**',
     redirectTo: 'home',

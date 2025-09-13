@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.sh-search {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-end: 1.5rem;
+
+  &__input {
+    position: relative;
+    font-size: 1.2rem;
+
+    span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    input {
+      padding: 0.25rem;
+      padding-inline-start: 2rem;
+      border-block-end: 1px solid;
+      outline: none;
+      color: #fff;
+    }
+  }
+}
+
+.sh-movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+  gap: 3rem;
+}
