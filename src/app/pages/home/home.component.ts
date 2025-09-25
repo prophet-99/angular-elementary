@@ -6,9 +6,10 @@ import { map } from 'rxjs';
 
 import { TheMovieDbService } from '@core/services/the-movie-db.service';
 import { HomeMoviesComponent } from './home-movies/home-movies.component';
+import { HomeReservationsComponent } from './home-reservations/home-reservations.component';
 
 const NG_IMPORTS = [DatePipe];
-const IMPORTS = [HomeMoviesComponent];
+const IMPORTS = [HomeMoviesComponent, HomeReservationsComponent];
 
 @Component({
   selector: 'app-home',

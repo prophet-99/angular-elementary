@@ -1,0 +1,23 @@
+<form [formGroup]="reservationForm">
+  <article>
+    <label for="date-reservation">Elegir fecha</label>
+    <input
+      type="date"
+      id="date-reservation"
+      formControlName="dateReservation"
+    />
+  </article>
+
+  <article>
+    <label for="time-reservation">Elegir hora</label>
+    <input
+      type="time"
+      id="time-reservation"
+      formControlName="timeReservation"
+    />
+  </article>
+
+  <button [disabled]="reservationForm.invalid" (click)="onReserve()">
+    Reservar ticket
+  </button>
+</form>
