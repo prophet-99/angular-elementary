@@ -5,11 +5,16 @@ import { DatePipe } from '@angular/common';
 import { map } from 'rxjs';
 
 import { TheMovieDbService } from '@core/services/the-movie-db.service';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { HomeMoviesComponent } from './home-movies/home-movies.component';
 import { HomeReservationsComponent } from './home-reservations/home-reservations.component';
 
 const NG_IMPORTS = [DatePipe];
-const IMPORTS = [HomeMoviesComponent, HomeReservationsComponent];
+const IMPORTS = [
+  HomeMoviesComponent,
+  HomeReservationsComponent,
+  ButtonComponent,
+];
 
 @Component({
   selector: 'app-home',

@@ -1,5 +1,5 @@
-<form [formGroup]="reservationForm">
-  <article>
+<form class="sh-reservation-form" [formGroup]="reservationForm">
+  <article class="sh-reservation-form__field">
     <label for="date-reservation">Elegir fecha</label>
     <input
       type="date"
@@ -8,7 +8,7 @@
     />
   </article>
 
-  <article>
+  <article class="sh-reservation-form__field">
     <label for="time-reservation">Elegir hora</label>
     <input
       type="time"
@@ -17,7 +17,16 @@
     />
   </article>
 
-  <button [disabled]="reservationForm.invalid" (click)="onReserve()">
-    Reservar ticket
-  </button>
+  <app-button
+    text="Reservar ticket"
+    [isDisabled]="reservationForm.invalid"
+    (click)="onReserve()"
+  />
 </form>
+
+<div class="sh-modal" [class.is-active]="showModal">
+  <section class="sh-modal__window">
+    <button class="sh-modal__close">❌</button>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+  </section>
+</div>

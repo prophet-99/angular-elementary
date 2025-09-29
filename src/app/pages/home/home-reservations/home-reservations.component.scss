@@ -1,14 +1,71 @@
 :host {
-  padding: 2rem;
   display: block;
-  background: #fff;
+  padding: 2rem;
+  background-color: var(--third-color);
 }
 
-form {
+.sh-reservation-form {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    input {
+      padding: 0.25em 0.5rem;
+      border: 2px solid #a9adac;
+      border-radius: 0.25rem;
+      outline: none;
+      background-color: #4e4d4d;
+      color: #fff;
+      transition: border-color 0.3s ease-out;
+      &:focus {
+        border-color: var(--primary-color);
+      }
+    }
+  }
 }
 
-input {
-  border: 2px solid #2a2929;
+.sh-modal {
+  z-index: var(--z-modal);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000099;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  &__window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 350px;
+    padding: 2rem;
+    transform: translate(-50%, -50%);
+    border-radius: 0.25rem;
+    background: var(--third-color);
+    color: #fff;
+  }
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+  }
+  &.is-active {
+    pointer-events: initial;
+    opacity: 1;
+  }
 }

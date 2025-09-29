@@ -1,0 +1,12 @@
+.sh-button {
+  padding: 0.5em 1.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+  &:hover {
+    background-color: var(--emphasis-color);
+  }
+}
