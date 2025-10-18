@@ -35,37 +35,3 @@
     }
   }
 }
-
-.sh-modal {
-  z-index: var(--z-modal);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000099;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  &__window {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    max-width: 350px;
-    padding: 2rem;
-    transform: translate(-50%, -50%);
-    border-radius: 0.25rem;
-    background: var(--third-color);
-    color: #fff;
-  }
-  &__close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    cursor: pointer;
-  }
-  &.is-active {
-    pointer-events: initial;
-    opacity: 1;
-  }
-}
