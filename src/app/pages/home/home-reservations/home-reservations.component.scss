@@ -35,3 +35,22 @@
     }
   }
 }
+
+.sh-reservation-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  &__title {
+    font-size: 2rem;
+    margin-block-end: 1rem;
+  }
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  input {
+    border: 1px solid #fff;
+  }
+}
