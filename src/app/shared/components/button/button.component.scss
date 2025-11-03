@@ -9,4 +9,9 @@
   &:hover {
     background-color: var(--emphasis-color);
   }
+
+  &[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
 }

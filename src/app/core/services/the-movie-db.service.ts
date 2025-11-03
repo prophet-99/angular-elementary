@@ -7,20 +7,21 @@ import {
   type MovieDbNowPlayingResponse,
   type MovieDbResponse,
 } from '@core/models/movie.model';
-import { environment } from '@environments/environment';
+import { environment } from '@environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TheMovieDbService {
+  // DI
   private readonly http = inject(HttpClient);
-
-  baseURL = `${environment.baseApiUrl}/movie`;
+  //LOCALE
+  baseURL = `${environment.baseApiUrlTheMovieDB}/movie`;
 
   getNowPlayingMovies(): Observable<MovieDbNowPlayingResponse> {
     const headers = new HttpHeaders().set(
       'Authorization',
-      `Bearer ${environment.apiKey}`
+      `Bearer ${environment.apiKeyTheMovieDB}`
     );
 
     return this.http.get<MovieDbNowPlayingResponse>(
@@ -34,7 +35,7 @@ export class TheMovieDbService {
   getPopularMovies(page = 1): Observable<MovieDbResponse> {
     const headers = new HttpHeaders().set(
       'Authorization',
-      `Bearer ${environment.apiKey}`
+      `Bearer ${environment.apiKeyTheMovieDB}`
     );
 
     return this.http.get<MovieDbResponse>(

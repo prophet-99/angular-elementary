@@ -11,7 +11,11 @@
 
     <article>
       <app-button text="Cancelar" (click)="modalEventBusService.closeModal()" />
-      <app-button text="Aceptar" />
+      <app-button
+        text="Aceptar"
+        [isDisabled]="preventAction()"
+        (click)="onAccept.emit()"
+      />
     </article>
   </section>
 </div>

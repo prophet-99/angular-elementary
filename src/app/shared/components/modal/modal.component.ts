@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { ModalEventBusService } from './modal.event-bus.service';
@@ -16,4 +16,7 @@ const IMPORTS = [ButtonComponent];
 export class ModalComponent {
   // DI
   readonly modalEventBusService = inject(ModalEventBusService);
+  // LOCALE
+  onAccept = output<void>();
+  preventAction = input(false);
 }

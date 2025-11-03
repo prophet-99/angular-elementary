@@ -1,11 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormGroup,
   FormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+
+import { Subscription } from 'rxjs';
+
+import { ReservationsService } from '@core/services/reservations.service';
+import { reservationEntityToModel } from '@core/models/mappers/reservation.mapper';
 import { ButtonComponent, ModalComponent } from '@shared/components';
 import { ModalEventBusService } from '@shared/components/modal/modal.event-bus.service';
 
@@ -22,9 +28,12 @@ export class HomeReservationsComponent implements OnInit {
   // DI
   private readonly fb = inject(FormBuilder);
   private readonly modalEventBusService = inject(ModalEventBusService);
+  private readonly reservationsService = inject(ReservationsService);
+  private destroyRef = inject(DestroyRef);
   // LOCALE
   reservationForm!: FormGroup;
   modalReservationForm!: FormGroup;
+  mySuscription!: Subscription;
 
   constructor() {
     this.reservationForm = this.fb.group({
@@ -54,31 +63,53 @@ export class HomeReservationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO: EVITAR MEMORY LEAKS
-    this.reservationForm.valueChanges.subscribe(
-      ({ dateReservation, timeReservation }) => {
-        this.modalReservationForm.patchValue({
-          dateReservation,
-          timeReservation,
-        });
-      }
-    );
+    this.reservationForm.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ dateReservation, timeReservation }) => {
+        this.modalReservationForm.patchValue(
+          {
+            dateReservation,
+            timeReservation,
+          },
+          { emitEvent: false }
+        );
+      });
 
-    this.modalReservationForm.valueChanges.subscribe(
-      ({ dateReservation, timeReservation }) => {
-        this.reservationForm.patchValue({
-          dateReservation,
-          timeReservation,
-        });
-      }
-    );
+    this.modalReservationForm.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ dateReservation, timeReservation }) => {
+        this.reservationForm.patchValue(
+          {
+            dateReservation,
+            timeReservation,
+          },
+          { emitEvent: false }
+        );
+      });
   }
 
   onReserve() {
     if (this.reservationForm.invalid) return;
-
-    console.log(this.reservationForm.value);
-
     this.modalEventBusService.openModal();
+  }
+
+  saveReservation() {
+    if (this.modalReservationForm.invalid) return;
+
+    const reservationMapped = reservationEntityToModel(
+      this.modalReservationForm.value
+    );
+
+    this.reservationsService.createReservation(reservationMapped).subscribe({
+      next: (reservation) => {
+        alert('Reservation created successfully!');
+        console.log(reservation);
+
+        this.modalEventBusService.closeModal();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }
