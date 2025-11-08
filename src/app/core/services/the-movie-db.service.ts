@@ -19,30 +19,14 @@ export class TheMovieDbService {
   baseURL = `${environment.baseApiUrlTheMovieDB}/movie`;
 
   getNowPlayingMovies(): Observable<MovieDbNowPlayingResponse> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      `Bearer ${environment.apiKeyTheMovieDB}`
-    );
-
     return this.http.get<MovieDbNowPlayingResponse>(
-      `${this.baseURL}/now_playing?language=es-ES&page=1`,
-      {
-        headers,
-      }
+      `${this.baseURL}/now_playing?language=es-ES&page=1`
     );
   }
 
   getPopularMovies(page = 1): Observable<MovieDbResponse> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      `Bearer ${environment.apiKeyTheMovieDB}`
-    );
-
     return this.http.get<MovieDbResponse>(
-      `${this.baseURL}/popular?language=es-ES&page=${page}`,
-      {
-        headers,
-      }
+      `${this.baseURL}/popular?language=es-ES&page=${page}`
     );
   }
 }

@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 
 import { TheMovieDbService } from '@core/services/the-movie-db.service';
 import { ButtonComponent } from '@shared/components/button/button.component';
+import { MovieDbThumbPipe } from '@shared/pipes/movie-db-thumb.pipe';
 import { HomeMoviesComponent } from './home-movies/home-movies.component';
 import { HomeReservationsComponent } from './home-reservations/home-reservations.component';
 
@@ -14,6 +15,7 @@ const IMPORTS = [
   HomeMoviesComponent,
   HomeReservationsComponent,
   ButtonComponent,
+  MovieDbThumbPipe,
 ];
 
 @Component({

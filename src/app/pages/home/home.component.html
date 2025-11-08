@@ -16,7 +16,7 @@
   </section>
   <picture class="sh-home__poster">
     <img
-      src="https://image.tmdb.org/t/p/original/{{ movie?.poster_path }}"
+      [src]="movie?.poster_path | movieDbThumb"
       alt="poster de la película {{ movie?.title }}"
     />
   </picture>
